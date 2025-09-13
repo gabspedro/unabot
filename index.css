@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background: #0f0f17;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.6;
+  animation: float 10s infinite alternate ease-in-out;
+}
+
+.shape.blue { background: #3a9bfd; top: 10%; left: 15%; }
+.shape.pink { background: #ff4db8; top: 50%; left: 70%; }
+.shape.green { background: #00ff99; top: 70%; left: 30%; }
+
+@keyframes float {
+  from { transform: translateY(0) translateX(0); }
+  to   { transform: translateY(-50px) translateX(50px); }
+}
