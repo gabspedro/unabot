@@ -161,52 +161,62 @@
     </div>
   </nav>
 
-  <!-- Chat -->
-  <div name="dashboard" class="row d-flex justify-content-center align-items-center">
-    <div class="col-6 text-white vh-100" style="border-right: 1px solid rgba(255, 255, 255, 0.1); border-left: 1px solid rgba(255, 255, 255, 0.1);">
-        <div class="col" style="height: 78%;">
-            <!-- Mensagens Aparecerção Aqui -->
-        </div>
-    </div>
+  <!-- Chat Box (mensagens vão aqui) -->
+  <div class="col-6 offset-3 text-white vh-100 d-flex flex-column justify-content-between"
+      style="border-right: 1px solid rgba(255, 255, 255, 0.1); border-left: 1px solid rgba(255, 255, 255, 0.1);">
+    <div class="chat-box flex-grow-1 p-3"></div>
   </div>
 
-  <!-- Input de Texto -->
-  <div name="text-input"
-       class="row position-absolute w-100 mt-5 m-3 d-flex justify-content-center align-items-center"
-       id="chat-input"
-       style="top:82%">
-    <div class="col-4 p-2 rounded-5"
-         style="backdrop-filter: blur(15px) saturate(150%);
+  <!-- Input do Chat -->
+  <div class="row position-absolute w-100 m-3 d-flex justify-content-center" style="top: 82%;">
+    <div class="col-5 p-2 rounded-5"
+        style="backdrop-filter: blur(15px) saturate(150%);
                 -webkit-backdrop-filter: blur(15px) saturate(150%);
                 background-color: rgba(255, 255, 255, 0.05);
                 border: 1px solid rgba(255, 255, 255, 0.1);">
-      <form class="row">
+      <form class="row justify-content-around" id="chat-form">
+        <!-- Select de Modo -->
         <div class="col-auto">
-          <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
-          <select class="form-select bg-transparent border border-secondary dropdown-secondary text-secondary rounded-5" id="inlineFormSelectPref">
+          <select class="form-select bg-transparent border border-secondary text-secondary rounded-5"
+                  id="chat-mode">
             <option value="1">PADRÃO</option>
             <option value="2">URL</option>
             <option value="3">ARQUIVO</option>
           </select>
         </div>
+
+        <!-- Campo de Pergunta -->
         <div class="col-6 position-relative">
-          <input class="bg-transparent border border-secondary rounded-5 text-secondary w-100 mt-1" id="resposta" type="text">
-          <button class="btn btn-transparent rounded-5 position-absolute" style="bottom:5.5%; right:5%">
-            <img src="./icons/link.png" width="15px" height="15px">
+          <input type="text" id="questionInput"
+                class="bg-transparent border border-secondary rounded-5 text-secondary w-100 mt-1"
+                placeholder="Digite sua pergunta..." />
+
+          <!-- Campo de URL (somente modo 2) -->
+          <input type="text" id="urlInput" class="form-control mt-2 d-none" placeholder="Cole a URL aqui..." />
+
+          <!-- Input de arquivo (oculto, será clicado pelo botão 📎) -->
+          <input type="file" id="fileInput" accept="application/pdf" class="form-control mt-2 d-none" />
+          
+          <!-- Botão para acionar o input de arquivo -->
+          <button id="fileBtn" type="button" class="btn btn-transparent rounded-5 position-absolute"
+                  style="bottom: 5.5%; right: 5%;">
+            <img src="./icons/link.png" width="15px" height="15px" />
           </button>
         </div>
+
+        <!-- Botão de Enviar -->
         <div class="col-auto">
-          <button class="btn btn-outline-secondary rounded-5" type="button"> ➤ </button>
+          <button id="sendBtn" class="btn btn-outline-secondary rounded-5" type="button">➤</button>
         </div>
       </form>
     </div>
   </div>
 
+
   <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- ChatBot -->
-  <script src="./chat.js"></script>
   <script src="./script.js"></script>
 </body>
 </html>
